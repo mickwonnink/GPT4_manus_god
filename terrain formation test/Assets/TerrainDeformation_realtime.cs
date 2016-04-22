@@ -20,6 +20,20 @@ public class TerrainDeformation_realtime : MonoBehaviour
         heights = myTerrain.terrainData.GetHeights(0, 0, xResolution, zResolution);
     }
 
+    public void RayCastHand(Ray ray)
+    {
+        RaycastHit hit;
+
+        if (!EventSystem.current.IsPointerOverGameObject())
+        {
+                if (Physics.Raycast(ray, out hit))
+                {
+                    lowerTerrain(hit.point);
+                }           
+        }
+
+    }
+
     void Update()
     {
         RaycastHit hit;
